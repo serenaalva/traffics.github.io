@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>traffic light</title>
+    <style>
+        .traffic-light{
+            width: 100px;
+            height:270px;
+            
+            background-color: #333;
+            padding:1rem;
+            align-items: center;
+        }
+        .light{
+            border-radius: 50%;
+            height: 80px;
+            width:80px;
+            
+        }
+        .red{
+            background-color: transparent;
+            border: 3px solid red;
+
+        }
+        .yellow{
+            background-color: transparent;
+            border:3px solid yellow
+        }
+        .green{
+            background-color: transparent;
+            border:3px solid green;
+        }
+    </style>
+</head>
+<body style="align-items: center;">
+    <div class="traffic-light">
+        <div class="light red"></div>
+        <div class="light yellow"></div>
+        <div class="light green"></div>
+
+    </div>
+    <script>
+        const lights=document.querySelectorAll('.light');
+        let CurrentLightIndex=0;
+        function ChangeLights(){
+            lights.forEach(light=>{
+                light.style.backgroundColor='transparent';
+
+            });
+            lights[CurrentLightIndex].style.backgroundColor=lights[CurrentLightIndex].classList[1];
+            CurrentLightIndex=(CurrentLightIndex+1)%lights.length;
+            setTimeout(ChangeLights,2000);
+        }
+        ChangeLights();
+    </script>
+</body>
+</html>
